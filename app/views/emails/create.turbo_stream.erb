@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "emails-list",
+      partial: "emails/email",
+      locals: { email: @email } %>
+
+<%= turbo_stream.replace "viewer",
+      partial: "emails/viewer",
+      locals: { email: @email } %>

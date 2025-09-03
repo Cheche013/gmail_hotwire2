@@ -1,0 +1,28 @@
+<div id="<%= dom_id(email) %>" class="list-group-item d-flex align-items-center gap-2">
+ 
+  <%= form_with model: email,
+                url: email_path(email),
+                method: :patch,
+                data: { turbo: true },
+                class: "m-0" do |f| %>
+    <%= f.check_box :read,
+                    { class: "form-check-input", onchange: "this.form.requestSubmit()" },
+                    true, false %>
+  <% end %>
+
+  
+  <%= link_to email.object,
+              email_path(email),
+              data: { turbo_frame: "viewer" },
+              class: "flex-grow-1 text-decoration-none #{'fw-bold' unless email.read?}" %>
+
+  
+  <%= button_to email_path(email),
+                method: :delete,
+                form: { data: { turbo_confirm: "Supprimer cet email ?" } },
+                class: "btn btn-link p-0 text-danger",
+                title: "Supprimer" do %>
+    <i class="fa-solid fa-trash" aria-hidden="true"></i>
+    <span class="visually-hidden">Supprimer</span>
+  <% end %>
+</div>

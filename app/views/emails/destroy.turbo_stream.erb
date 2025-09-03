@@ -1,0 +1,7 @@
+<%= turbo_stream.remove dom_id(@email) %>
+
+<%= turbo_stream.replace "viewer" do %>
+  <%= turbo_frame_tag "viewer" do %>
+    <p class="text-muted mb-0">Sélectionne un email dans la colonne de gauche.</p>
+  <% end %>
+<% end %>
